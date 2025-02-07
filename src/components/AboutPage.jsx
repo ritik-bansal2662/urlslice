@@ -7,24 +7,19 @@ const AboutPage = () => {
         <h1 className="sm:text-4xl text-slate-800 text-3xl font-bold italic  mb-3">
           About UrlSlice
         </h1>
-        <p className="text-gray-700 text-sm  mb-8 xl:w-[60%] lg:w-[70%] sm:w-[80%] w-full ">
-          UrlSlice simplifies URL shortening for efficient sharing. Easily
-          generate, manage, and track your shortened links. UrlSlice simplifies
-          URL shortening for efficient sharing. Easily generate, manage, and
-          track your shortened links. UrlSlice simplifies URL shortening for
-          efficient sharing. Easily generate, manage, and track your shortened
-          links. UrlSlice simplifies URL shortening for efficient sharing.
-          Easily generate, manage, and track your shortened links.
+        <p className="text-gray-700 text-sm  mb-8 xl:w-[60%] lg:w-[70%] sm:w-[80%] w-full">
+          UrlSlice allows you to create custom and meaningful URL and helps you to get rid of random characters in the short URL. It simplifies URL shortening for efficient sharing. Easily
+          generate, manage, and track your shortened links.
         </p>
         <div className="space-y-5 xl:w-[60%] lg:w-[70%] sm:w-[80%] w-full ">
           <div className="flex items-start">
             <FaLink className="text-blue-500 text-3xl mr-4" />
             <div>
               <h2 className="sm:text-2xl font-bold text-slate-800">
-                Simple URL Shortening
+                Custom short URLs
               </h2>
               <p className="text-gray-600">
-                Experience the ease of creating short, memorable URLs in just a
+                Experience the ease of creating meaningful, short, memorable URLs in just a
                 few clicks. Our intuitive interface and quick setup process
                 ensure you can start shortening URLs without any hassle.
               </p>

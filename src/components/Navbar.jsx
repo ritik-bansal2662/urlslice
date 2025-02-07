@@ -73,13 +73,21 @@ const Navbar = () => {
             </Link>
           </li>
           )}
-          {!token && (
+          {!token && path != '/register' && (
             <Link to="/register">
               <li className=" sm:ml-0 -ml-1 bg-rose-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
                 SignUp
               </li>
             </Link>
-            )}
+          )}
+
+          {!token && path=='/register' && (
+            <Link to="/login">
+              <li className=" sm:ml-0 -ml-1 bg-rose-700 text-white  cursor-pointer w-24 text-center font-semibold px-2 py-2 rounded-md  hover:text-slate-300   transition-all duration-150">
+                Login
+              </li>
+            </Link>
+          )}
 
           {token && (
             <button

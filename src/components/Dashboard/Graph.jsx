@@ -19,7 +19,7 @@ ChartJS.register(
   Filler
 );
 
-const Graph = ({ graphData }) => {
+const Graph = ({ graphData = [] }) => {
   const labels = graphData?.map((item, i) => `${item.clickDate}`);
   const userPerDate = graphData?.map((item) => item.count);
 

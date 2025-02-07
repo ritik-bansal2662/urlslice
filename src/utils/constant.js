@@ -11,4 +11,9 @@ export const subDomainList = [
         app: SubDomainRouter, 
         main: false
     },
+    {
+        subDomain : "a", 
+        app: SubDomainRouter, 
+        main: false
+    },
 ]
