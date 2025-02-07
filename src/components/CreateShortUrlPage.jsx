@@ -8,7 +8,7 @@ import { useStoreContext } from '../contextApi/ContextApi';
 import Loader from '../components/Loader'
 import ShortenUrlList from './Dashboard/ShortenUrlList';
 import { Link } from 'react-router-dom';
-import BackgroundWords from './BackgoundWords';
+// import BackgroundWords from './BackgoundWords';
 
 const CreateShortUrlPage = () => {
     const [loading, setLoading] = useState(false)
@@ -199,13 +199,15 @@ const CreateShortUrlPage = () => {
                         <TextField
                             label="Enter Custom Short URL"
                             id="customShortUrl"
-                            placeholder="myResume"
+                            placeholder="myCustomShortLink"
                             type="text"
                             message="Url is required"
                             register={register}
                             errors={errors}
                             isSlug={true}
-                            inputClassName = 'pl-[12.5rem] pr-4 py-2.5'
+                            inputClassName = 'pl-[11.5rem] pr-4 py-2.5'
+                            min={3}
+                            max={12}
                         />
                     </div>
                 </div>

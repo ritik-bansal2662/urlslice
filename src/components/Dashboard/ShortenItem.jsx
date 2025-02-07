@@ -10,6 +10,7 @@ import api from '../../api/api';
 import { useStoreContext } from '../../contextApi/ContextApi';
 import { Hourglass } from 'react-loader-spinner';
 import Graph from './Graph';
+import { dateFormat } from '../../utils/dateUtils';
 
 const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate, showAnalytics=true }) => {
     const { token } = useStoreContext();
@@ -45,8 +46,19 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate, showAnaly
                 }
             })
             console.log(data);
+
+            const formattedData = data.map((item) => (
+                {
+                    ...item,
+                    clickDate : dateFormat(item.clickDate)
+                }
+            ))
+
+            const sortedData = formattedData.sort(
+                (a, b) => new Date(a.clickDate) - new Date(b.clickDate)
+            )
             
-            setAnalyticsData(data)
+            setAnalyticsData(sortedData)
             setSelectedUrl("")
         } catch(error) {
             navigate("/error")
@@ -66,7 +78,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate, showAnaly
     <div className={`bg-slate-100 shadow-lg border border-dotted  border-slate-500 px-6 sm:py-1 py-3 rounded-md  transition-all duration-100 `}>
         <div className={`flex sm:flex-row flex-col  sm:justify-between w-full sm:gap-0 gap-5 py-5 `}>
             <div className="flex-1 sm:space-y-1 max-w-full overflow-x-auto overflow-y-hidden ">
-                <div className="text-slate-900 pb-1 sm:pb-0   flex items-center gap-2 ">
+                <div className="text-slate-900 pb-1 sm:pb-0 flex items-center gap-2 ">
                     <Link
                         target='_'
                         className='text-[17px]  font-montserrat font-[600] text-linkColor'
@@ -77,8 +89,8 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate, showAnaly
                 </div>
 
                 <div className="flex items-center gap-1 ">
-                    <h3 className="text-slate-700 font-[400] text-[17px] ">
-                        {originalUrl}
+                    <h3 className="text-blue-500 font-[400] text-[17px] ">
+                        <a target="_blank" href={originalUrl}>{originalUrl}</a>
                     </h3>
                 </div>
 

@@ -1,5 +1,6 @@
 import { useQuery } from "react-query"
 import api from '../api/api'
+import { dateFormat } from "../utils/dateUtils"
 
 export const useFetchMyShortUrls = (token, onError) => {
     // const options = {
@@ -25,7 +26,7 @@ export const useFetchMyShortUrls = (token, onError) => {
         { // options object
             select: (data) => {
                 const sortedData = data.data.sort(
-                    (a, b) => new Date(b.createdDate) - new Date(a.createdDate)
+                    (a, b) => new Date(a.createdDate) - new Date(b.createdDate)
                 )
 
                 return sortedData;
@@ -62,9 +63,19 @@ export const useFetchTotalClicks = (token, onError) => {
         { // options object
             select: (data) => {
                 const convertToArray = Object.keys(data.data).map((key) => ({
-                    clickDate: key,
+                    clickDate: dateFormat(key, false),
                     count : data.data[key]
                 }));
+
+                convertToArray.sort(function(a, b) {
+                    let keyA = new Date(a.clickDate);
+                    let keyB = new Date(b.clickDate);
+                    // Compare the 2 dates
+                    if (keyA < keyB) return -1;
+                    if (keyA > keyB) return 1;
+                    return 0;
+                });
+                  
 
                 return convertToArray;
 
